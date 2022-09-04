@@ -1,12 +1,14 @@
 import { useState } from "react"
 import '../Styles/Alumno.css'
-export const ComponentAlumno = () => {
+export const ComponentAlumnos = () => {
     const [name, setnam] = useState('')
     const [nota1, setnum1] = useState('')
     const [nota2, setnum2] = useState('')
     const [nota3, setnum3] = useState('')
 
-    const [alumno, setAlumno] = useState({})
+
+
+    const [alumnos, setAlumnos] = useState([])
 
     const setName = (event) => {
         setnam(event.target.value)
@@ -34,9 +36,7 @@ export const ComponentAlumno = () => {
         console.log(alumnito)
         alumnito.sal = (alumnito.n1 * .2) + (alumnito.n2 * .2) + (alumnito.n3 * .6)
 
-        setAlumno(alumnito)
-
-
+        setAlumnos([...alumnos, alumnito])
     }
 
 
@@ -45,9 +45,9 @@ export const ComponentAlumno = () => {
         <>
             <div className="body10">
                 <div className="titulo10">
-                    <h1>11. Ingrese el nombre del estudiante</h1>  
+                    <h1>12. Ingrese el nombre del estudiante</h1>
                 </div>
-
+                
                 <div className="input10">
                     <input type="text" onChange={(event) => setName(event)} value={name} placeholder="Nombre" class="form-control" />
                     <h2>Ingrese las notas del estudiante</h2>
@@ -56,9 +56,9 @@ export const ComponentAlumno = () => {
                     <input type="text" onChange={(event) => setn3(event)} value={nota3} placeholder="Nota 3" class="form-control" />
                     <p>Nota 1 vale 20%, nota 2 vale 20%, nota 3 vale 60%</p>
                     <button onClick={() => calcularNota()} class="btn btn-primary btn-sm">Calcular nota</button>
-                    <p> La nota final  de {alumno.name} es: {alumno.sal} </p>
+                    <p> La nota final  de {alumnos.name} es: {alumnos.sal} </p>
                 </div>
-              
+
             </div>
         </>
 

@@ -1,39 +1,53 @@
 
-import { useState } from "react"
- 
- 
-export const Componentlistanumeros=(onComponentlistanumeros) =>{
- 
-    // var [sal, set] = useState('')
-    // const[cnumero,setnum4]=useState('')
-    // const [ categories, addLista] = useState([categories])
- 
-    // const Set4= (event) =>{
-    //     setnum4(event.target.value)
-    // }
- 
+import { useEffect, useState } from "react"
+import '../Styles/ListaNumero.css'
+
+
+export const Componentlistanumeros = ({ lista }) => {
+
+    useEffect( () => {
+        console.log( lista )
+        setLista2([...lista]);
+    }, [lista])
+
+
+    const [cnumero, setnum4] = useState('')
+    const [lista2, setLista2] = useState([ ...lista])
+
+    const Set4 = (event) => {
+        setnum4(event.target.value)
+    }
+    
+    const onComponentlistanumeros = () => {
+
+        const lista3 = [...lista2, cnumero];
+
+        // ordenan lista 3
+
+        setLista2(lista3)
+    }
+
     // const agregarLista = ( category ) => {
-    //     addLista([...categories, cnumero ]) //los puntos son para clonar los valores del arreglo categories a uno nuevo
+
     // }
- 
-    // const listaOrdenada=(categories) =>{
- 
-       
-       
-    // }
- 
-    // return(
- 
-    //     <>
-       
-    //     <h1>5. Ingrese otro número</h1>
-    //     <input type="text" onChange={(event)=> Set4(event)} value={cnumero} placeholder="Cuarto número" />        
-       
-    //     <p></p>
-    //     <button onClick={() =>listaOrdenada(categories)}>¡Boom! Magía</button>
-    //     <p>{sal}</p>
-    //     </>
- 
-    // )
-   
+
+
+    return (
+
+        <>
+            <div className="titulo5">
+                <h1>5. Ingrese otro número</h1>
+            </div>
+
+            <div className="input5">
+                <input type="text" onChange={(event) => Set4(event)} value={cnumero} placeholder="Cuarto número" class="form-control"/>
+
+                <p> { JSON.stringify(lista2) } </p>
+                <button onClick={() => onComponentlistanumeros()} class="btn btn-primary btn-sm">¡Boom! Magía</button>
+            </div>
+
+        </>
+
+    )
+
 }

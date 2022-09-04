@@ -1,4 +1,5 @@
 import { useState } from "react"
+import '../Styles/Hora.css'
 
 
 export const Hora=()=>{
@@ -26,10 +27,20 @@ export const Hora=()=>{
      
     return(
         <>
-        <h1>Ingrese la hora en Segundos</h1>
-        <input type="text" onChange={(event)=> Setsegundo(event)} value={seg} />
-        <button onClick={() =>Cambiarhora(seg)}>Convertir la Hora</button>
-        <p>{horaCambiada}</p>
+
+        <div className="body">
+            <div className="titulo">
+                <h1>Ingrese la hora en Segundos</h1>
+             </div>
+
+            <div className="input">
+                <input type="text" onChange={(event)=> Setsegundo(event)} value={seg} class="form-control"/>
+                <p></p>
+                <button  onClick={() =>Cambiarhora(seg)} class="btn btn-primary btn-sm">Convertir la Hora</button>
+                <p>{horaCambiada}</p>
+            </div>
+
+        </div>
         </>
 
     )
